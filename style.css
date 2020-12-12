@@ -13,3 +13,10 @@ html {
     stroke: #222;
     stroke-width: 0.8;
 }
+
+.ghg {
+    fill: lightskyblue;
+    stroke: blue;
+    stroke-width: .3;
+    opacity: .7;
+}

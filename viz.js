@@ -11,7 +11,10 @@
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  d3.queue().defer(d3.json, "us.json").await(ready);
+  d3.queue()
+    .defer(d3.json, "us.json")
+    .defer(d3.csv, "ghgData.csv")
+    .await(ready);
 
   var projection = d3
     .geoAlbersUsa()
@@ -20,7 +23,7 @@
 
   var path = d3.geoPath().projection(projection);
 
-  function ready(error, data) {
+  function ready(error, data, ghgData) {
     console.log(data);
 
     var states = topojson.feature(data, data.objects.states).features;
@@ -33,5 +36,26 @@
       .append("path")
       .attr("class", "state")
       .attr("d", path);
+
+    console.log(ghgData);
+
+    svg
+      .selectAll(".ghg")
+      .data(ghgData)
+      .enter()
+      .append("circle")
+      .attr("class", "ghg")
+      .attr("r", 5)
+      .attr("cx", (d) => {
+        var coords = projection([d.X, d.Y]);
+        console.log(d.Organization)
+        console.log(d.Scope1)
+        console.log(coords[0])
+        return coords[0];
+      })
+      .attr("cy", (d) => {
+        var coords = projection([d.X, d.Y]);
+        return coords[1];
+      });
   }
 })();
