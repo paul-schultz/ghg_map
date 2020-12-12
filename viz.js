@@ -23,9 +23,19 @@
 
   var path = d3.geoPath().projection(projection);
 
-  var radius = d3.scaleSqrt()
-    .domain([0, 1e6])
-    .range([0, 15]);
+  var radius = d3.scaleSqrt().domain([0, 1e6]).range([0, 15]);
+
+  var tool1 = d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip1")
+    .style("opacity", 0);
+
+  var tool2 = d3
+    .select("body")
+    .append("div")
+    .attr("class", "tooltip2")
+    .style("opacity", 0);
 
   function ready(error, data, ghgData) {
     console.log(data);
@@ -41,8 +51,6 @@
       .attr("class", "state")
       .attr("d", path);
 
-    console.log(ghgData);
-
     svg
       .selectAll(".scope1")
       .data(ghgData)
@@ -50,7 +58,7 @@
       .append("circle")
       .attr("class", "scope1")
       .attr("r", (d) => {
-          return radius(d.Scope1)
+        return radius(d.Scope1);
       })
       .attr("cx", (d) => {
         var coords = projection([d.X, d.Y]);
@@ -59,16 +67,42 @@
       .attr("cy", (d) => {
         var coords = projection([d.X, d.Y]);
         return coords[1];
+      })
+      .on("mouseover", (d) => {
+        tool1.transition().duration(200).style("opacity", 0.9);
+        tool1
+          .html(
+            "Organization: " +
+              d.Organization +
+              "<br>" +
+              "City: " +
+              d.City +
+              "<br>" +
+              "State: " +
+              d.State +
+              "<br>" +
+              "Gases Included: " +
+              d["Gases Included"] +
+              "<br>" +
+              "Scope 1 Emissions: " +
+              d.Scope1 +
+              " Mt C02e"
+          )
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY - 28 + "px");
+      })
+      .on("mouseout", (d) => {
+        tool1.transition().duration(500).style("opacity", 0);
       });
 
-      svg
+    svg
       .selectAll(".scope2")
       .data(ghgData)
       .enter()
       .append("circle")
       .attr("class", "scope2")
       .attr("r", (d) => {
-          return radius(d.Scope2)
+        return radius(d.Scope2);
       })
       .attr("cx", (d) => {
         var coords = projection([d.X, d.Y]);
@@ -77,6 +111,32 @@
       .attr("cy", (d) => {
         var coords = projection([d.X, d.Y]);
         return coords[1];
+      })
+      .on("mouseover", (d) => {
+        tool2.transition().duration(200).style("opacity", 0.9);
+        tool2
+          .html(
+            "Organization: " +
+              d.Organization +
+              "<br>" +
+              "City: " +
+              d.City +
+              "<br>" +
+              "State: " +
+              d.State +
+              "<br>" +
+              "Gases Included: " +
+              d["Gases Included"] +
+              "<br>" +
+              "Scope 2 Emissions: " +
+              d.Scope2 +
+              " Mt C02e"
+          )
+          .style("left", d3.event.pageX + "px")
+          .style("top", d3.event.pageY - 28 + "px");
+      })
+      .on("mouseout", (d) => {
+        tool2.transition().duration(500).style("opacity", 0);
       });
   }
 })();

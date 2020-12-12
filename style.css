@@ -14,7 +14,32 @@ html {
     stroke-width: 0.8;
 }
 
+.tooltip1 {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.tooltip2 {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    padding: 2px;
+    font: 12px sans-serif;
+    background:salmon;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 .scope1 {
+    visibility: hidden;
     fill: lightskyblue;
     stroke: blue;
     stroke-width: .3;
@@ -22,7 +47,7 @@ html {
 }
 
 .scope2 {
-    visibility: hidden;
+    visibility: visible;
     fill: lightsalmon;
     stroke: red;
     stroke-width: .3;
