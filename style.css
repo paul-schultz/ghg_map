@@ -47,6 +47,22 @@ html {
 }
 
 .scope2 {
+    visibility: hidden;
+    fill: lightsalmon;
+    stroke: red;
+    stroke-width: .3;
+    opacity: .5;
+}
+
+.statescope1 {
+    visibility: hidden;
+    fill: lightskyblue;
+    stroke: blue;
+    stroke-width: .3;
+    opacity: .5;
+}
+
+.statescope2 {
     visibility: visible;
     fill: lightsalmon;
     stroke: red;

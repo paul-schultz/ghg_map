@@ -13,7 +13,8 @@
 
   d3.queue()
     .defer(d3.json, "us.json")
-    .defer(d3.csv, "ghgData.csv")
+    .defer(d3.csv, "ghgDataCity.csv")
+    .defer(d3.csv, "ghgDataState.csv")
     .await(ready);
 
   var projection = d3
@@ -37,9 +38,10 @@
     .attr("class", "tooltip2")
     .style("opacity", 0);
 
-  function ready(error, data, ghgData) {
+  function ready(error, data, ghgDataCity, ghgDataState) {
     console.log(data);
 
+    // Render state map svg
     var states = topojson.feature(data, data.objects.states).features;
     console.log(states);
 
@@ -51,9 +53,49 @@
       .attr("class", "state")
       .attr("d", path);
 
+    // Scope 1 data by state
+    svg
+      .selectAll('.statescope1')
+      .data(ghgDataState)
+      .enter()
+      .append('circle')
+      .attr('class', 'statescope1')
+      .attr("r", (d) => {
+        return radius(d.Scope1);
+      })
+      .attr("cx", (d) => {
+        var coords = projection([d.X, d.Y]);
+        return coords[0];
+      })
+      .attr("cy", (d) => {
+        var coords = projection([d.X, d.Y]);
+        return coords[1];
+      });
+
+    // Scope 2 data by state
+    svg
+    .selectAll('.statescope2')
+    .data(ghgDataState)
+    .enter()
+    .append('circle')
+    .attr('class', 'statescope2')
+    .attr("r", (d) => {
+      return radius(d.Scope2);
+    })
+    .attr("cx", (d) => {
+      var coords = projection([d.X, d.Y]);
+      return coords[0];
+    })
+    .attr("cy", (d) => {
+      var coords = projection([d.X, d.Y]);
+      return coords[1];
+    });
+
+
+    //   Scope 1 data by city
     svg
       .selectAll(".scope1")
-      .data(ghgData)
+      .data(ghgDataCity)
       .enter()
       .append("circle")
       .attr("class", "scope1")
@@ -95,9 +137,10 @@
         tool1.transition().duration(500).style("opacity", 0);
       });
 
+    //   Scope 2 data by city
     svg
       .selectAll(".scope2")
-      .data(ghgData)
+      .data(ghgDataCity)
       .enter()
       .append("circle")
       .attr("class", "scope2")
