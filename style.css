@@ -14,9 +14,17 @@ html {
     stroke-width: 0.8;
 }
 
-.ghg {
+.scope1 {
     fill: lightskyblue;
     stroke: blue;
     stroke-width: .3;
-    opacity: .7;
+    opacity: .5;
+}
+
+.scope2 {
+    visibility: hidden;
+    fill: lightsalmon;
+    stroke: red;
+    stroke-width: .3;
+    opacity: .5;
 }

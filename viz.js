@@ -23,6 +23,10 @@
 
   var path = d3.geoPath().projection(projection);
 
+  var radius = d3.scaleSqrt()
+    .domain([0, 1e6])
+    .range([0, 15]);
+
   function ready(error, data, ghgData) {
     console.log(data);
 
@@ -40,17 +44,34 @@
     console.log(ghgData);
 
     svg
-      .selectAll(".ghg")
+      .selectAll(".scope1")
       .data(ghgData)
       .enter()
       .append("circle")
-      .attr("class", "ghg")
-      .attr("r", 5)
+      .attr("class", "scope1")
+      .attr("r", (d) => {
+          return radius(d.Scope1)
+      })
       .attr("cx", (d) => {
         var coords = projection([d.X, d.Y]);
-        console.log(d.Organization)
-        console.log(d.Scope1)
-        console.log(coords[0])
+        return coords[0];
+      })
+      .attr("cy", (d) => {
+        var coords = projection([d.X, d.Y]);
+        return coords[1];
+      });
+
+      svg
+      .selectAll(".scope2")
+      .data(ghgData)
+      .enter()
+      .append("circle")
+      .attr("class", "scope2")
+      .attr("r", (d) => {
+          return radius(d.Scope2)
+      })
+      .attr("cx", (d) => {
+        var coords = projection([d.X, d.Y]);
         return coords[0];
       })
       .attr("cy", (d) => {
