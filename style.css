@@ -2,3 +2,14 @@ html {
     box-sizing: border-box;
     margin: 0;
 }
+
+#map {
+    width: 80vw;
+    margin: auto;
+}
+
+.state {
+    fill: #e4e4e4;
+    stroke: #222;
+    stroke-width: 0.8;
+}
