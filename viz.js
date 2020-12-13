@@ -22,7 +22,7 @@
   var projection = d3
     .geoAlbersUsa()
     .translate([width / 2, height / 2])
-    .scale(1200);
+    .scale(1100);
 
   var path = d3.geoPath().projection(projection);
 
@@ -44,13 +44,13 @@
   var stateTool1 = d3
     .select("body")
     .append("div")
-    .attr("class", "tooltip1")
+    .attr("class", "statetooltip1")
     .style("opacity", 0);
 
   var stateTool2 = d3
     .select("body")
     .append("div")
-    .attr("class", "tooltip2")
+    .attr("class", "statetooltip2")
     .style("opacity", 0);
 
   // Render Data function

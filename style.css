@@ -1,11 +1,58 @@
+:root {
+    --blue: #66CCEE;
+    --green: #228833;
+    --yellow: #CCBB44;
+    --red: #EE6677;
+}
+
 html {
     box-sizing: border-box;
     margin: 0;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+}
+
 #map {
     width: 80vw;
     margin: auto;
+}
+
+.checkbox-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    padding: 12px;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+.label {
+    padding: 6px;
+    color: white;
+    border-radius: 4px;
+}
+
+.l-b {
+    background-color: var(--blue);
+}
+
+.l-g {
+    background-color: var(--green);
+}
+
+.l-y {
+    background-color: var(--yellow);
+}
+
+.l-r {
+    background-color: var(--red);
 }
 
 .state {
@@ -27,11 +74,19 @@ html {
 }
 
 .tooltip1 {
-    background: lightsteelblue;
+    background: var(--blue);
 }
 
 .tooltip2 {
-    background:salmon;
+    background: var(--green);
+}
+
+.statetooltip1 {
+    background: var(--yellow);
+}
+
+.statetooltip2 {
+    background: var(--red);
 }
 
 /* City data styling */
@@ -43,28 +98,29 @@ html {
 }
 
 .scope1 {
-    fill: #41ACCC;
-    stroke: #24738b;
+    fill: #66CCEE;
+    stroke: #222;
 }
 
 .scope2 {
-    fill: #998BC4;
-    stroke: #57478a;
+    fill: #228833;
+    stroke: #222;
 }
 
 .statescope1 {
-    fill: #7D1F02;
-    stroke: #501402;
+    fill: #CCBB44;
+    stroke: #222;
 }
 
 .statescope2 {
-    fill: #90B028;
-    stroke: #668012;
+    fill: #EE6677;
+    stroke: #222;
 }
 
 .scope1:hover, .scope2:hover,
 .statescope1:hover, .statescope2:hover  {
     opacity: 1;
     stroke-width: 2;
+    cursor: pointer
 }
 
