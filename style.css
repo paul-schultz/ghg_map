@@ -10,62 +10,61 @@ html {
 
 .state {
     fill: #e4e4e4;
-    stroke: #222;
-    stroke-width: 0.8;
+    stroke: #fff;
+    stroke-width: 1.2;
+}
+
+.tooltip1, .tooltip2,
+.statetooltip1, .statetooltip2 {
+    position: absolute;
+    display: inline-block;
+    text-align: left;
+    padding: 2px;
+    font: 12px sans-serif;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 .tooltip1 {
-    position: absolute;
-    display: inline-block;
-    text-align: left;
-    padding: 2px;
-    font: 12px sans-serif;
     background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
 }
 
 .tooltip2 {
-    position: absolute;
-    display: inline-block;
-    text-align: left;
-    padding: 2px;
-    font: 12px sans-serif;
     background:salmon;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
+}
+
+/* City data styling */
+
+.scope1, .scope2,
+.statescope1, .statescope2 {
+    stroke-width: .3;
+    opacity: .5;
 }
 
 .scope1 {
-    visibility: hidden;
-    fill: lightskyblue;
-    stroke: blue;
-    stroke-width: .3;
-    opacity: .5;
+    fill: #41ACCC;
+    stroke: #24738b;
 }
 
 .scope2 {
-    visibility: hidden;
-    fill: lightsalmon;
-    stroke: red;
-    stroke-width: .3;
-    opacity: .5;
+    fill: #998BC4;
+    stroke: #57478a;
 }
 
 .statescope1 {
-    visibility: hidden;
-    fill: lightskyblue;
-    stroke: blue;
-    stroke-width: .3;
-    opacity: .5;
+    fill: #7D1F02;
+    stroke: #501402;
 }
 
 .statescope2 {
-    visibility: visible;
-    fill: lightsalmon;
-    stroke: red;
-    stroke-width: .3;
-    opacity: .5;
+    fill: #90B028;
+    stroke: #668012;
 }
+
+.scope1:hover, .scope2:hover,
+.statescope1:hover, .statescope2:hover  {
+    opacity: 1;
+    stroke-width: 2;
+}
+
