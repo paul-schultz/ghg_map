@@ -14,9 +14,9 @@
 
   // init data sets
   d3.queue()
-    .defer(d3.json, "us.json")
-    .defer(d3.csv, "ghgDataCity.csv")
-    .defer(d3.csv, "ghgDataState.csv")
+    .defer(d3.json, "./data/us.json")
+    .defer(d3.csv, "./data/ghgDataCity.csv")
+    .defer(d3.csv, "./data/ghgDataState.csv")
     .await(ready);
 
   var projection = d3
